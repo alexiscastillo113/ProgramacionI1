@@ -1,0 +1,334 @@
+CLASE PERSONA:
+package mx.uaemex.dto;
+
+/**
+ *
+ * @author si
+ */
+public class Persona {
+    
+    private int id;
+    private String nombre;
+    private String apellidoMaterno;
+    private String apellidoPaterno;
+    private String genero;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
+    }
+
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
+
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "id=" + id + ", nombre=" + nombre + ", apellidoMaterno=" + apellidoMaterno + ", apellidoPaterno=" + apellidoPaterno + ", genero=" + genero + '}';
+    }
+    
+    
+           
+}
+
+CLASE ALUMNO:
+package mx.uaemex.dto;
+
+/**
+ *
+ * @author si
+ */
+public class Alumno extends Persona {
+    
+    private int id;
+    private int numerodeCuenta;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNumerodeCuenta() {
+        return numerodeCuenta;
+    }
+
+    public void setNumerodeCuenta(int numerodeCuenta) {
+        this.numerodeCuenta = numerodeCuenta;
+    }
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "id=" + id + ", numerodeCuenta=" + numerodeCuenta + '}';
+    }
+    
+    
+}
+
+CLASE PROFESOR:
+package mx.uaemex.dto;
+
+/**
+ *
+ * @author si
+ */
+public class Profesor extends Persona {
+    
+    private int id;
+    private int numerodeEmpleado;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNumerodeEmpleado() {
+        return numerodeEmpleado;
+    }
+
+    public void setNumerodeEmpleado(int numerodeEmpleado) {
+        this.numerodeEmpleado = numerodeEmpleado;
+    }
+
+    @Override
+    public String toString() {
+        return "Profesor{" + "id=" + id + ", numerodeEmpleado=" + numerodeEmpleado + '}';
+    }
+
+CLASE PRESTAMO:
+package mx.uaemex.dto;
+
+import java.util.Date;
+import java.util.List;
+
+public class Prestamo {
+    
+    private int id;
+    private int folio;
+    private Date fechaInicio;
+    private Date fechaEntrega;
+    private String status;
+    private List<Libro> libros;
+    private Persona persona;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getFolio() {
+        return folio;
+    }
+
+    public void setFolio(int folio) {
+        this.folio = folio;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaEntrega() {
+        return fechaEntrega;
+    }
+
+    public void setFechaEntrega(Date fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(List<Libro> libros) {
+        this.libros = libros;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    @Override
+    public String toString() {
+        return "Prestamo{" + "id=" + id + ", folio=" + folio + ", fechaInicio=" + fechaInicio + ", fechaEntrega=" + fechaEntrega + ", status=" + status + ", libros=" + libros + ", persona=" + persona + '}';
+    }
+    
+    
+}
+
+CLASE LIBRO:
+package mx.uaemex.dto;
+
+/**
+ *
+ * @author si
+ */
+public class Libro {
+    
+    private int id;
+    private String nombre;
+    private int isbn;
+    private String editorial;
+    private String categoria;
+    private int stock;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    @Override
+    public String toString() {
+        return "Libro{" + "id=" + id + ", nombre=" + nombre + ", isbn=" + isbn + ", editorial=" + editorial + ", categoria=" + categoria + ", stock=" + stock + '}';
+    }
+    
+    
+}
+
+CLASE TEST:
+package mx.uaemex.dto.test;
+
+import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+import mx.uaemex.dto.*;
+
+public class TestPrestamo {
+    public static void main(String []args) {
+                Alumno alumno1 = new Alumno();		
+		alumno1.setId(1);
+		alumno1.setNombre("Raul");
+		alumno1.setNumerodeCuenta(20227102);
+		alumno1.setApellidoPaterno("Jimenez");
+		alumno1.setApellidoMaterno("Perez");
+		
+		
+		Libro Libro1 = new Libro();
+		Libro1.setId(1);
+		Libro1.setNombre("Calculo");
+		Libro1.setCategoria("Matematicas");
+		Libro1.setEditorial("Alfaomega");
+		Libro1.setIsbn(344);
+		Libro1.setStock(2);
+		
+		Libro Libro2 = new Libro();
+		Libro2.setId(1);
+		Libro2.setNombre("Fundamentos de Programacion");
+		Libro2.setCategoria("Programacion");
+		Libro2.setEditorial("Alfaomega");
+		Libro2.setIsbn(2324);
+		Libro2.setStock(5);
+		
+		List<Libro> listalibros=new ArrayList<>();
+		listalibros.add(Libro1);
+		listalibros.add(Libro2);
+		
+		Prestamo prestamo1= new Prestamo();
+		Date fechaInt= new Date();
+		prestamo1.setId(1);
+		prestamo1.setFolio(345);
+		prestamo1.setFechaInicio(fechaInt);
+		prestamo1.setLibros(listalibros);
+		prestamo1.setPersona(alumno1);
+
+		System.out.println(prestamo1);
+}
+}

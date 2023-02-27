@@ -1,0 +1,174 @@
+CLASE SESIONDEUSUARIO:
+package programa.credenciales;
+
+
+public class SesionDeUsuario {
+    
+    private BaseDeDatos bd = new BaseDeDatos();
+private String usuario;
+private String password;
+private boolean loggedIn = false;
+public SesionDeUsuario() {}
+public void doLogin() {
+String passwordMD5 = HelperEncriptacion.getMD5(this.password);
+for(int i=0;i<5;i++) {
+if(bd.usuariosRegistrados[i].getUsuario().equals(this.usuario)) {
+if(bd.usuariosRegistrados[i].getPasswordMD5().equals(passwordMD5)) {
+loggedIn=true;
+
+
+}
+}
+}
+}
+
+    public BaseDeDatos getBd() {
+        return bd;
+    }
+
+    public void setBd(BaseDeDatos bd) {
+        this.bd = bd;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+}
+
+CLASE USUARIO:
+package programa.credenciales;
+
+
+public class Usuario {
+    
+    private String usuario;
+private String passwordMD5;
+private Integer añoNacimiento;
+public Usuario(String usuario, String passwordMD5) {
+this.usuario = usuario;
+this.passwordMD5 = passwordMD5;
+}
+public String getUsuario() {
+return usuario;
+}
+public void setUsuario(String usuario) {
+this.usuario = usuario;
+}
+public String getPasswordMD5() {
+return passwordMD5;
+}
+public void setPasswordMD5(String passwordMD5) {
+this.passwordMD5 = passwordMD5;
+}
+public Integer getAnioNacimiento() {
+return añoNacimiento;
+}
+public void setAnioNacimiento(Integer anioNacimiento) {
+this.añoNacimiento = anioNacimiento;
+}
+// edad es un atributo derivado, tiene getter pero no setter
+public Integer getEdad() {
+return 2023 - añoNacimiento;
+
+}
+}
+
+
+CLASE BASEDEDATOS:
+package programa.credenciales;
+
+
+public class BaseDeDatos {
+    
+    public Usuario[] usuariosRegistrados = new Usuario[5];
+public BaseDeDatos() {
+usuariosRegistrados[0]= new Usuario("juan","e10adc3949ba59abbe56e057f20f883e");//123456
+usuariosRegistrados[1]= new Usuario("sofia","e80b5017098950fc58aad83c8c14978e");//abcdef
+usuariosRegistrados[2]= new Usuario("antonio","5f4dcc3b5aa765d61d8327deb882cf99");//password
+usuariosRegistrados[3]= new Usuario("luisa","89c79702b411a0b89ccf8f8e01590f0c");//19051980
+usuariosRegistrados[4]= new Usuario("jorge","17df4f8c0f4182b650ec83355b33d796");//J0rg3
+}
+}
+
+CLASE HELPERENCRIPTACION:
+package programa.credenciales;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class HelperEncriptacion {
+    
+    public static String getMD5(String texto) {
+String hashtext="";
+try {
+MessageDigest md = MessageDigest.getInstance("MD5");
+byte[] messageDigest = md.digest(texto.getBytes());
+BigInteger no = new BigInteger(1, messageDigest);
+hashtext = no.toString(16);
+while (hashtext.length() < 32) {
+hashtext = "0" + hashtext;
+}
+} catch (NoSuchAlgorithmException e) {
+e.printStackTrace();
+}
+return hashtext;
+}
+}
+
+PACKAGE DEL TEST (CLASE TESTENCAPSULADO):
+package programa.credenciales.test;
+
+import programa.credenciales.*;
+
+public class TestEncapsulado {
+    
+    public static void main(String[] args) {
+testLogin();
+testHackeo();
+}
+public static void testLogin() {
+SesionDeUsuario sesionDeUsuario = new SesionDeUsuario();
+sesionDeUsuario.setUsuario("sofia");
+sesionDeUsuario.setPassword("uvwxyz");
+sesionDeUsuario.doLogin();
+if(sesionDeUsuario.isLoggedIn()) {
+System.out.println("Bienvenido "+sesionDeUsuario.getUsuario());
+}else {
+System.out.println("Su usuario o contraseña están equivocados");
+}
+sesionDeUsuario.setPassword("abcdef");
+sesionDeUsuario.doLogin();
+if(sesionDeUsuario.isLoggedIn()) {
+System.out.println("Bienvenido "+sesionDeUsuario.getUsuario());
+}else {
+System.out.println("Su usuario o contraseña estan equivocados");
+}
+}
+public static void testHackeo() {
+SesionDeUsuario sesionDeUsuario = new SesionDeUsuario();
+sesionDeUsuario.getPassword();
+sesionDeUsuario.setLoggedIn(true);
+}
+}

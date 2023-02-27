@@ -1,0 +1,341 @@
+﻿CLASE PERSONA:
+package proyecto.album;
+
+public class Persona extends Cancion {
+    
+    private int id;
+    private String nombre;
+    private String nombreartista;  
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private int FechaNacimiento;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    
+    public String getNombreartista() {
+        return nombreartista;
+    }
+
+    public void setNombreartista(String nombreartista) {
+        this.nombreartista = nombreartista;
+    }
+  
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
+
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
+
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
+    }
+
+    public int getFechaNacimiento() {
+        return FechaNacimiento;
+    }
+
+    public void setFechaNacimiento(int FechaNacimiento) {
+        this.FechaNacimiento = FechaNacimiento;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "id=" + id + ", nombreartista=" + nombreartista + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", FechaNacimiento=" + FechaNacimiento + '}';
+    }
+
+CLASE ARTISTA:
+package proyecto.album;
+
+public class Artista extends Persona {
+    
+    private int id;
+    private String NombreArtistico;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombreArtistico() {
+        return NombreArtistico;
+    }
+
+    public void setNombreArtistico(String NombreArtistico) {
+        this.NombreArtistico = NombreArtistico;
+    }
+
+    @Override
+    public String toString() {
+        return "Artista{" + "id=" + id + ", NombreArtistico=" + NombreArtistico + '}';
+    }
+
+CLASE GRUPO:
+package proyecto.album;
+
+import java.util.List;
+
+public class Grupo extends Persona {
+    
+    private int id;
+    private String nombre;
+    private List<Artista> Artista;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Artista> getArtista() {
+        return Artista;
+    }
+
+    public void setArtista(List<Artista> Artista) {
+        this.Artista = Artista;
+    }    
+
+    @Override
+    public String toString() {
+        return "Grupo{" + "id=" + id + ", nombre=" + nombre + ", Artista=" + Artista + '}';
+    }
+
+CLASE ALBUM:
+package proyecto.album;
+
+import java.util.List;
+
+public class Album  {
+    
+    private int id;
+    private String nombre;
+    private List<Cancion> Cancion;
+    private int FechaLanzamiento;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Cancion> getCancion() {
+        return Cancion;
+    }
+
+    public void setCancion(List<Cancion> Cancion) {
+        this.Cancion = Cancion;
+    }  
+    public int getFechaLanzamiento() {
+        return FechaLanzamiento;
+    }
+
+    public void setFechaLanzamiento(int FechaLanzamiento) {
+        this.FechaLanzamiento = FechaLanzamiento;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" + "id=" + id + ", nombre=" + nombre + ", Cancion=" + Cancion + ", FechaLanzamiento=" + FechaLanzamiento + '}';
+    }
+
+CLASE CANCION:
+package proyecto.album;
+
+import java.util.List;
+
+public class Cancion extends Album {
+    
+    private int id;
+    private String nombre;
+    private int FechaLanzamiento;
+    private String compositor;
+    private String genero;
+    List<Persona> persona;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getFcehaLanzamiento() {
+        return FechaLanzamiento;
+    }
+
+    public void setFcehaLanzamiento(int FcehaLanzamiento) {
+        this.FechaLanzamiento = FcehaLanzamiento;
+    }
+
+    public String getCompositor() {
+        return compositor;
+    }
+
+    public void setCompositor(String compositor) {
+        this.compositor = compositor;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public List<Persona> getPersona() {
+        return persona;
+    }
+
+    public void setPersona(List<Persona> persona) {
+        this.persona = persona;
+    }
+
+    @Override
+    public String toString() {
+        return "Cancion{" + "id=" + id + ", nombre=" + nombre + ", FcehaLanzamiento=" + FechaLanzamiento + ", compositor=" + compositor + ", genero=" + genero + ", persona=" + persona + '}';
+    }
+
+CLASE GENERO:
+package proyecto.album;
+
+
+public class Genero extends Cancion {
+    
+    private int id;
+    private String nombre;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Genero{" + "id=" + id + ", nombre=" + nombre + '}';
+    }
+
+    public void setGenero(String pop) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+PACKAGE DEL TEST (CLASE TEST ALBUM):
+package proyecto.album.testalbum;
+
+import java.util.List;
+import java.util.ArrayList;
+import proyecto.album.*;
+
+public class TestAlbum {
+    
+    public static void main(String []args) {
+        
+        Persona Artista1 = new Persona ();
+        Artista1.setNombreartista("Bruno Mars");
+        Artista1.setNombre("Peter");
+        Artista1.setApellidoPaterno("Gene");
+        Artista1.setApellidoMaterno("Hernández");
+        Artista1.setId(1);
+        
+        Cancion cancion1 = new Cancion ();
+        cancion1.setCompositor("Bruno Mars");
+        cancion1.setFechaLanzamiento(2012);
+        cancion1.setGenero("Pop");
+        cancion1.setNombre("Locked Out of Heaven");
+        cancion1.setId(2);
+        
+        Genero genero1 = new Genero();
+//        genero1.setGenero("Pop");
+        genero1.setId(2);
+        
+        Album album1 = new Album();
+        album1.setId(1);
+        album1.setNombre("24K Magic");
+        album1.setFechaLanzamiento(2016);
+        
+        List<Artista> listaArtistas = new ArrayList<>();
+//        listaArtistas.add(Artista1);
+        
+        List<Persona> listaPersona = new ArrayList<>();
+        listaPersona.add(Artista1);
+        
+        List<Cancion> listaCancion = new ArrayList<>();
+        listaCancion.add(cancion1);
+        
+        for (Artista artista : listaArtistas){
+            System.out.println ("Nombre Artistico: " + artista.getNombreArtistico());
+            System.out.println ("Nombre: " + artista.getNombre()+ " " + artista.getApellidoPaterno() + " " + artista.getApellidoMaterno());         
+                                 
+      }
+        System.out.println (listaPersona);
+        System.out.println (listaCancion);
+        
+        
+        
+        
+    }
+    
+}
